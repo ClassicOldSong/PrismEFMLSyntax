@@ -1,21 +1,21 @@
 export default {
-	efml_line: {
+	'efml_line': {
 		pattern: /^.*?(\n|$)/,
 		inside: {
 			comment: /^(\s+)?(?=[^\s>.#%@+-]).*?(\n|$)/,
-			tag_define: {
-				pattern: /^\s*(?=\>).*?(\n|$)/,
+			'tag_define': {
+				pattern: /^\s*(?=>).*?(\n|$)/,
 				inside: {
-					tag: />.*?(?=(\.|\#|$|\n))/,
+					tag: />.*?(?=(\.|#|$|\n))/,
 					class: {
 						alias: 'attr-name',
-						pattern: /\..*?(?=((#([^\}]|\}[^\}])*$)|$|\n))/,
+						pattern: /\..*?(?=((#([^}]|\}[^}])*$)|$|\n))/,
 						inside: {
 							mustache: {
 								pattern: /(\{\{).*?(?=(\}\}|$|\n))/,
 								lookbehind: true,
 								inside: {
-									keyword: /^[^=].*?(?=(\=|$))/,
+									keyword: /^[^=].*?(?=(=|$))/,
 									string: {
 										pattern: /(=).*?(?=(\n|$))/,
 										lookbehind: true,
@@ -24,13 +24,13 @@ export default {
 							}
 						}
 					},
-					property: /\#([^\}]|\}[^\}])*$/
+					property: /#([^}]|\}[^}])*$/
 				}
 			},
-			attr_define: {
-				pattern: /\s*?(?=\#).*?(\n|$)/,
+			'attr_define': {
+				pattern: /\s*?(?=#).*?(\n|$)/,
 				inside: {
-					'attr-name': /\#[^=].*?(?=(\=|\n|$))/,
+					'attr-name': /#[^=].*?(?=(=|\n|$))/,
 					string: {
 						pattern: /(=).*?(?=(\n|$))/,
 						lookbehind: true,
@@ -39,7 +39,7 @@ export default {
 								pattern: /(\{\{).*?(?=(\}\}|$|\n))/,
 								lookbehind: true,
 								inside: {
-									keyword: /^[^=].*?(?=(\=|$))/,
+									keyword: /^[^=].*?(?=(=|$))/,
 									string: {
 										pattern: /(=).*?(?=(\n|$))/,
 										lookbehind: true
@@ -50,10 +50,10 @@ export default {
 					}
 				}
 			},
-			prop_define: {
-				pattern: /\s*?(?=\%).*?(\n|$)/,
+			'prop_define': {
+				pattern: /\s*?(?=%).*?(\n|$)/,
 				inside: {
-					property: /\%[^=].*?(?=(\=|\n|$))/,
+					property: /%[^=].*?(?=(=|\n|$))/,
 					string: {
 						pattern: /(=).*?(?=(\n|$))/,
 						lookbehind: true,
@@ -62,7 +62,7 @@ export default {
 								pattern: /(\{\{).*?(?=(\}\}|$|\n))/,
 								lookbehind: true,
 								inside: {
-									keyword: /^[^=].*?(?=(\=|$))/,
+									keyword: /^[^=].*?(?=(=|$))/,
 									string: {
 										pattern: /(=).*?(?=(\n|$))/,
 										lookbehind: true
@@ -73,10 +73,10 @@ export default {
 					}
 				}
 			},
-			event_define: {
-				pattern: /\s*?(?=\@).*?(\n|$)/,
+			'event_define': {
+				pattern: /\s*?(?=@).*?(\n|$)/,
 				inside: {
-					keyword: /\@[^=].*?(?=(\=|\n|$))/,
+					keyword: /@[^=].*?(?=(=|\n|$))/,
 					function: {
 						pattern: /(=)[^:].*?(?=(:|\n|$))/,
 						lookbehind: true
@@ -89,7 +89,7 @@ export default {
 								pattern: /(\{\{).*?(?=(\}\}|$|\n))/,
 								lookbehind: true,
 								inside: {
-									keyword: /^[^=].*?(?=(\=|$))/,
+									keyword: /^[^=].*?(?=(=|$))/,
 									string: {
 										pattern: /(=).*?(?=(\n|$))/,
 										lookbehind: true
@@ -107,7 +107,7 @@ export default {
 						pattern: /(\{\{).*?(?=(\}\}|$|\n))/,
 						lookbehind: true,
 						inside: {
-							keyword: /^[^=].*?(?=(\=|$))/,
+							keyword: /^[^=].*?(?=(=|$))/,
 							string: {
 								pattern: /(=).*?(?=(\n|$))/,
 								lookbehind: true
